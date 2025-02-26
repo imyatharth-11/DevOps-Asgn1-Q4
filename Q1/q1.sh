@@ -2,7 +2,7 @@
 
 set -e #When error occurs it will stop the further execution of the code
 
-
+# Converts a number to an array
 number_to_array() {
 	local number=$1
 	local digit_array=()
@@ -17,6 +17,7 @@ number_to_array() {
 	echo ${digit_array[@]}
 }
 
+# Converts array to a number
 array_to_number() {
 	local arr=($@)
 	local num=0
@@ -27,6 +28,7 @@ array_to_number() {
 	echo $num
 }
 
+# Sort the array in ascending order
 sort_asc() {
 	array=($@)
 	for (( i=0; i<4; i++ )); do
@@ -41,6 +43,7 @@ sort_asc() {
 	echo ${array[@]}
 }
 
+# Sort the array in descending order
 sort_desc() {
 	array=($@)
 	for (( i=0; i<4; i++ )); do
@@ -55,6 +58,8 @@ sort_desc() {
 	echo ${array[@]}
 }
 
+# Q1(a) and Q1(c)
+# Processing the logic
 process() {
 	local digit_array=($@)
 	local num=$(array_to_number ${digit_array[@]})
@@ -96,7 +101,8 @@ process() {
 	echo
 }
 
-
+# Q1(b)
+# Handling Errors
 error_handling(){
 	digit_array=($@)
 	length=${#digit_array[*]}
@@ -129,6 +135,7 @@ error_handling(){
 	fi
 }
 
+# Correcting the format
 format_correction() {
 	array=($@)
 	temp1=${array[0]}
@@ -140,6 +147,9 @@ format_correction() {
 	echo ${array[@]}
 }
 
+# Q1(a)
+# Main function
+# It will call the other helper functions
 main () {
 	read -p "Enter the number:" number
 	digit_array=$(number_to_array $number)
@@ -151,4 +161,5 @@ main () {
 	process ${array[@]}
 }
 
+# Calling the main function
 main
